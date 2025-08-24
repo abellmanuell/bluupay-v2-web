@@ -63,7 +63,6 @@ export function Top() {
               </div>
               <div className="h-48 p-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
-                nisi numquam quos accusamus officiis, error id?
               </div>
             </DialogPanel>
           </TransitionChild>

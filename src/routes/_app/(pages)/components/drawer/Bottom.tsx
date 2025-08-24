@@ -62,8 +62,7 @@ export function Bottom() {
                 </Button>
               </div>
               <div className="h-[calc(100vh-15rem)] p-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
-                nisi numquam quos accusamus officiis, error id?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </div>
             </DialogPanel>
           </TransitionChild>
