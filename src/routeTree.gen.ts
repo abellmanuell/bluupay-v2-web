@@ -20,6 +20,7 @@ import { Route as ApppagesDashboardsSalesIndexRouteImport } from './routes/_app/
 import { Route as ApppagesDashboardsOrdersIndexRouteImport } from './routes/_app/(pages)/dashboards/orders/index'
 import { Route as ApppagesDashboardsCrmAnalyticsIndexRouteImport } from './routes/_app/(pages)/dashboards/crm-analytics/index'
 import { Route as ApppagesDashboardsCmsAnalyticsIndexRouteImport } from './routes/_app/(pages)/dashboards/cms-analytics/index'
+import { Route as ApppagesSettingsSectionsGeneralRouteImport } from './routes/_app/(pages)/settings/_sections/General'
 import { Route as ApppagesSettingsSectionsAppearanceRouteImport } from './routes/_app/(pages)/settings/_sections/Appearance'
 
 const AuthRouteRoute = AuthRouteRouteImport.update({
@@ -79,6 +80,12 @@ const ApppagesDashboardsCmsAnalyticsIndexRoute =
     path: '/dashboards/cms-analytics/',
     getParentRoute: () => AppRouteRoute,
   } as any)
+const ApppagesSettingsSectionsGeneralRoute =
+  ApppagesSettingsSectionsGeneralRouteImport.update({
+    id: '/(pages)/settings/_sections/General',
+    path: '/settings/General',
+    getParentRoute: () => AppRouteRoute,
+  } as any)
 const ApppagesSettingsSectionsAppearanceRoute =
   ApppagesSettingsSectionsAppearanceRouteImport.update({
     id: '/(pages)/settings/_sections/Appearance',
@@ -93,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/otp': typeof AuthOtpRoute
   '/register': typeof AuthRegisterRoute
   '/settings/Appearance': typeof ApppagesSettingsSectionsAppearanceRoute
+  '/settings/General': typeof ApppagesSettingsSectionsGeneralRoute
   '/dashboards/cms-analytics': typeof ApppagesDashboardsCmsAnalyticsIndexRoute
   '/dashboards/crm-analytics': typeof ApppagesDashboardsCrmAnalyticsIndexRoute
   '/dashboards/orders': typeof ApppagesDashboardsOrdersIndexRoute
@@ -105,6 +113,7 @@ export interface FileRoutesByTo {
   '/otp': typeof AuthOtpRoute
   '/register': typeof AuthRegisterRoute
   '/settings/Appearance': typeof ApppagesSettingsSectionsAppearanceRoute
+  '/settings/General': typeof ApppagesSettingsSectionsGeneralRoute
   '/dashboards/cms-analytics': typeof ApppagesDashboardsCmsAnalyticsIndexRoute
   '/dashboards/crm-analytics': typeof ApppagesDashboardsCrmAnalyticsIndexRoute
   '/dashboards/orders': typeof ApppagesDashboardsOrdersIndexRoute
@@ -120,6 +129,7 @@ export interface FileRoutesById {
   '/_auth/otp': typeof AuthOtpRoute
   '/_auth/register': typeof AuthRegisterRoute
   '/_app/(pages)/settings/_sections/Appearance': typeof ApppagesSettingsSectionsAppearanceRoute
+  '/_app/(pages)/settings/_sections/General': typeof ApppagesSettingsSectionsGeneralRoute
   '/_app/(pages)/dashboards/cms-analytics/': typeof ApppagesDashboardsCmsAnalyticsIndexRoute
   '/_app/(pages)/dashboards/crm-analytics/': typeof ApppagesDashboardsCrmAnalyticsIndexRoute
   '/_app/(pages)/dashboards/orders/': typeof ApppagesDashboardsOrdersIndexRoute
@@ -134,6 +144,7 @@ export interface FileRouteTypes {
     | '/otp'
     | '/register'
     | '/settings/Appearance'
+    | '/settings/General'
     | '/dashboards/cms-analytics'
     | '/dashboards/crm-analytics'
     | '/dashboards/orders'
@@ -146,6 +157,7 @@ export interface FileRouteTypes {
     | '/otp'
     | '/register'
     | '/settings/Appearance'
+    | '/settings/General'
     | '/dashboards/cms-analytics'
     | '/dashboards/crm-analytics'
     | '/dashboards/orders'
@@ -160,6 +172,7 @@ export interface FileRouteTypes {
     | '/_auth/otp'
     | '/_auth/register'
     | '/_app/(pages)/settings/_sections/Appearance'
+    | '/_app/(pages)/settings/_sections/General'
     | '/_app/(pages)/dashboards/cms-analytics/'
     | '/_app/(pages)/dashboards/crm-analytics/'
     | '/_app/(pages)/dashboards/orders/'
@@ -250,6 +263,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApppagesDashboardsCmsAnalyticsIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/_app/(pages)/settings/_sections/General': {
+      id: '/_app/(pages)/settings/_sections/General'
+      path: '/settings/General'
+      fullPath: '/settings/General'
+      preLoaderRoute: typeof ApppagesSettingsSectionsGeneralRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/_app/(pages)/settings/_sections/Appearance': {
       id: '/_app/(pages)/settings/_sections/Appearance'
       path: '/settings/Appearance'
@@ -263,6 +283,7 @@ declare module '@tanstack/react-router' {
 interface AppRouteRouteChildren {
   AppProfileRoute: typeof AppProfileRoute
   ApppagesSettingsSectionsAppearanceRoute: typeof ApppagesSettingsSectionsAppearanceRoute
+  ApppagesSettingsSectionsGeneralRoute: typeof ApppagesSettingsSectionsGeneralRoute
   ApppagesDashboardsCmsAnalyticsIndexRoute: typeof ApppagesDashboardsCmsAnalyticsIndexRoute
   ApppagesDashboardsCrmAnalyticsIndexRoute: typeof ApppagesDashboardsCrmAnalyticsIndexRoute
   ApppagesDashboardsOrdersIndexRoute: typeof ApppagesDashboardsOrdersIndexRoute
@@ -273,6 +294,7 @@ const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppProfileRoute: AppProfileRoute,
   ApppagesSettingsSectionsAppearanceRoute:
     ApppagesSettingsSectionsAppearanceRoute,
+  ApppagesSettingsSectionsGeneralRoute: ApppagesSettingsSectionsGeneralRoute,
   ApppagesDashboardsCmsAnalyticsIndexRoute:
     ApppagesDashboardsCmsAnalyticsIndexRoute,
   ApppagesDashboardsCrmAnalyticsIndexRoute:

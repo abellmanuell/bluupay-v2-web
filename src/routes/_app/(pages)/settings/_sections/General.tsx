@@ -1,3 +1,4 @@
+import { createFileRoute } from "@tanstack/react-router"
 // Import Dependencies
 import { PhoneIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import { EnvelopeIcon, UserIcon } from "@heroicons/react/24/outline";
@@ -10,11 +11,15 @@ import { Avatar, Button, Input, Upload } from "@/components/ui";
 
 // ----------------------------------------------------------------------
 
+export const Route = createFileRoute('/_app/(pages)/settings/_sections/General')({
+  component: General,
+})
+
 export default function General() {
   const [avatar, setAvatar] = useState<File | null>(null);
 
   return (
-    <div className="w-full max-w-3xl 2xl:max-w-5xl">
+    <div className="w-full max-w-3xl 2xl:max-w-5xl p-6">
       <h5 className="dark:text-dark-50 text-lg font-medium text-gray-800">
         General
       </h5>
