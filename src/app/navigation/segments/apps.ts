@@ -85,13 +85,13 @@ export const apps: NavigationTree = {
       transKey: "nav.apps.pos",
       icon: "apps.pos",
     },
-    {
+    /* {
       id: "apps.travel",
       path: path(ROOT_APPS, "/travel"),
       type: "item",
       title: "Travel",
       transKey: "nav.apps.travel",
       icon: "apps.travel",
-    },
+    }, */
   ],
 };

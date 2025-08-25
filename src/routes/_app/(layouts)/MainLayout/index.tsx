@@ -1,6 +1,5 @@
 // Import Dependencies
 import clsx from "clsx";
-// import { Outlet } from "@tanstack/react-router";
 
 // Local Imports
 import { Header } from "./Header";

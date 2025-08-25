@@ -2,8 +2,8 @@
   "nav": {
     "dashboards": {
       "dashboards": "Dashboards",
-      "sales": "Sales",
-      "crm-analytics": "CRM Analytics",
+      "sales": "Sales Overview",
+      
       "orders": "Orders",
       "crypto": "Cryptocurrency",
       "crypto-1": "Cryptocurrency v1",
@@ -24,33 +24,44 @@
       "meetings": "Meetings",
       "projects-board": "Projects Board",
       "widget-ui": "Widget UI",
-      "widget-contact": "Widget Contact"
+      "widget-contact": "Widget Contact",
+
+      "revenue": "Revenue & Profit",
+      "channel": "Sales by Channel",
+      "branches": "Branch Performance",
+      "top-products": "Top Products",
+      "customer-activity": "Customer Activity",
+      "outstanding-payments": "Outstanding Payments",
+      "low-stock-alerts": "Low Stock Alerts",
+      "staff-activity": "Staff Activity",
+      "ai-sales-forecast": "AI Sales Forecast"
     },
     "apps": {
-      "apps": "Apps",
-      "chat": "Chat",
-      "ai-chat": "AI Chat",
-      "kanban": "Kanban Board",
-      "mail": "Mail",
-      "todo": "Todo",
-      "nft-1": "NFT v1",
-      "nft-2": "NFT v2",
-      "filemanager": "File Manager",
-      "pos": "POS App",
-      "travel": "Travel"
+      "apps": "Sales",
+      "chat": "New Sale",
+      "ai-chat": "Split Payments",
+      "kanban": "Discounts",
+      "mail": "Hold/Resume",
+      "todo": "Refunds & Returns",
+      "nft-1": "Saved Carts",
+      "nft-2": "Offline Mode",
+      "filemanager": "Tips & Charges",
+      "pos": "AI Upsell"
     },
     "prototypes": {
-      "prototypes": "Prototypes",
-      "onboarding": "Onboarding",
-      "onboarding-1": "Onboarding v1",
-      "onboarding-2": "Onboarding v2",
-      "users-card": "Users Card",
-      "users-card-1": "Users Card 1",
-      "users-card-2": "Users Card 2",
-      "users-card-3": "Users Card 3",
-      "users-card-4": "Users Card 4",
-      "users-card-5": "Users Card 5",
-      "users-card-6": "Users Card 6",
+      "prototypes": "Products",
+      "catalog": "Catalog",
+      "categories": "Categories",
+      "barcode": "Barcode & SKU",
+      "adjustments": "Adjustments",
+      "price": "Price Lists",
+      "discount-rule": "Discount Rules",
+      "suppliers-linked": "Suppliers Linked",
+      "stock-transfers": "Stock Transfers",
+      "expiry-batches": "Expiry & Batches",
+      "ai-demand-forcast": "AI Demand Forecast",
+
+
       "users-card-7": "Users Card 7",
       "blog-card": "Blog Card",
       "blog-card-1": "Blog Card 1",
@@ -90,7 +101,19 @@
       "error-500": "Error 500"
     },
     "tables": {
-      "tables": "Tables",
+      "tables": "Orders",
+      "stores": "In-Store Orders",
+      "online": "Online Orders",
+      "social": "Social Orders",
+      "marketplace": "Marketplace Orders",
+      "preorders": "Pre-Orders",
+      "deliveries": "Deliveries",
+      "quotes": "Quotes to Orders",
+      "drafts": "Draft Orders",
+      "order-fulfillment": "Order Fulfillment",
+      "ai-delivery-eta": "AI Delivery ETA",
+
+   
       "orders-datatable-1": "Orders Datatable v1",
       "orders-datatable-2": "Orders Datatable v2",
       "courses-datatable": "Courses Datatable",
@@ -101,41 +124,34 @@
       "advanced-tables": "Advanced Tables"
     },
     "forms": {
-      "forms": "Forms",
-      "ekyc-form": "eKYC From",
-      "add-product-form": "Add Product From",
-      "new-post-form": "New Post From",
-      "input": "Input",
-      "input-group": "Input Group",
-      "input-mask": "Input Mask",
-      "checkbox": "Checkbox",
-      "radio": "Radio",
-      "switch": "Switch",
-      "swap": "Swap",
-      "textarea": "Textarea",
-      "select": "Select",
-      "range": "Range",
-      "listbox": "Listbox",
-      "autocomplete": "Autocomplete",
-      "file-upload": "File Upload",
-      "form-validation": "Form Validation",
-      "text-editor": "Text Editor",
-      "filepond": "Filepond",
-      "datepicker": "Datepicker"
+      "forms": "Customers",
+      "directory": "Directory",
+      "purchase-history": "Purchase History",
+      "loyalty-program": "Loyalty Program",
+      "segmentation": "Segmentation",
+      "credit-accounts": "Credit Accounts",
+      "gift-cards": "Gift Cards",
+      "feedback-reviews": "Feedback & Reviews",
+      "referral-program": "Referral Program",
+      "customer-insights": "Customer Insights",
+      "ai-churn-risk": "AI Churn Risk"
     },
     "components": {
-      "components": "Component",
+      "components": "Finance",
       "basic-ui": {
-        "basic-ui": "Basic UI",
-        "avatar": "Avatar",
-        "button": "Button",
-        "badge": "Badge",
-        "tag": "Tag",
-        "divider": "Divider",
-        "typography": "Typography"
+        "basic-ui": "Transactions",
+        "avatar": "Split Payments",
+        "button": "Payments Gateways",
+        "badge": "Settlements",
+        "tag": "Ledger",
+        "divider": "Expenses",
+        "typography": "Refunds",
+        "icon": "Multi-Currency",
+        "list": "AI Fraud Alerts",
+        "tooltip": "Cash Flow Forecast"
       },
       "data-display": {
-        "data-display": "Data Display",
+        "data-display": "Split Payments",
         "box": "Box",
         "popover": "Popover",
         "timeline": "Timeline",
@@ -145,7 +161,7 @@
         "contextual-help": "Contextual Help"
       },
       "navigation": {
-        "navigation": "Navigation",
+        "navigation": "Payments Gateways",
         "accordion": "Accordion",
         "tab": "Tab",
         "dropdown": "Dropdown",
@@ -155,37 +171,42 @@
         "treeview": "Treeview"
       },
       "loading": {
-        "loading": "Loading",
+        "loading": "Settlements",
         "progress": "Progress",
         "circlebar": "Circlebar",
         "skeleton": "Skeleton",
         "spinner": "Spinner"
       },
       "feedback": {
-        "feedback": "Feedback",
+        "feedback": "Ledger",
         "tooltip": "Tooltip",
         "notification": "Notification",
         "alert": "Alert"
       },
       "modal": {
-        "modal": "Modal",
+        "modal": "Expenses",
         "drawer": "Drawer"
       },
       "advanced": {
-        "advanced": "Advanced",
+        "advanced": "Refunds",
         "scroll-shadow": "Scroll Shadow",
         "charts": "Charts",
         "carousel": "Carousel"
       }
     },
+   
     "docs": {
-      "docs": "Documentation",
-      "getting-started": "Getting Started",
-      "shared-components": "Shared Components",
-      "hooks": "Hooks",
-      "utils": "Utilities",
-      "attributions": "Attributions",
-      "changelogs": "Changelogs"
+      "docs": "Reports",
+      "getting-started": "Sales Reports",
+      "shared-components": "Inventory Reports",
+      "hooks": "Customers Reports",
+      "utils": "Financial Reports",
+      "attributions": "Tax Reports",
+      "changelogs": "Staff Reports",
+      "branches-reports": "Branch Reports",
+      "marketing": "Marketing Reports",
+      "custom": "Custom Builder",
+      "predictive": "AI Predictive Reports"
     },
     "settings": {
       "settings": "Settings",
