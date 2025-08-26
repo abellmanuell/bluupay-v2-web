@@ -30,7 +30,7 @@ function LoginPage() {
       if (error) toast.error(error.message)
       await qc.invalidateQueries({ queryKey: sessionQueryOptions.queryKey })
 
-      navigate({ to: "/dashboards/sales" });
+      navigate({ to: "/" });
       return
     },
   })

@@ -5,10 +5,10 @@ import { useBreakpointsContext } from "../breakpoint/context";
 import { SidebarContext, SidebarContextValue } from "./context";
 
 const initialState: SidebarContextValue = {
-  isExpanded: true,
-  toggle: () => {},
-  open: () => {},
-  close: () => {},
+  isExpanded: false,
+  toggle: () => { },
+  open: () => { },
+  close: () => { },
 };
 
 export function SidebarProvider({ children }: { children: ReactNode }) {

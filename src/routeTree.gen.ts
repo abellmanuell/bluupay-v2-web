@@ -9,20 +9,28 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SettingsRouteRouteImport } from './routes/settings/route'
 import { Route as AuthRouteRouteImport } from './routes/_auth/route'
 import { Route as AppRouteRouteImport } from './routes/_app/route'
+import { Route as AppIndexRouteImport } from './routes/_app/index'
 import { Route as AuthRegisterRouteImport } from './routes/_auth/register'
 import { Route as AuthOtpRouteImport } from './routes/_auth/otp'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as AuthForgotRouteImport } from './routes/_auth/forgot'
 import { Route as AppProfileRouteImport } from './routes/_app/profile'
-import { Route as ApppagesDashboardsSalesIndexRouteImport } from './routes/_app/(pages)/dashboards/sales/index'
-import { Route as ApppagesDashboardsOrdersIndexRouteImport } from './routes/_app/(pages)/dashboards/orders/index'
-import { Route as ApppagesDashboardsCrmAnalyticsIndexRouteImport } from './routes/_app/(pages)/dashboards/crm-analytics/index'
-import { Route as ApppagesDashboardsCmsAnalyticsIndexRouteImport } from './routes/_app/(pages)/dashboards/cms-analytics/index'
-import { Route as ApppagesSettingsSectionsGeneralRouteImport } from './routes/_app/(pages)/settings/_sections/General'
-import { Route as ApppagesSettingsSectionsAppearanceRouteImport } from './routes/_app/(pages)/settings/_sections/Appearance'
+import { Route as AppDashboardsIndexRouteImport } from './routes/_app/dashboards/index'
+import { Route as SettingsSectionsSessionsRouteImport } from './routes/settings/_sections/Sessions'
+import { Route as SettingsSectionsNotificationsRouteImport } from './routes/settings/_sections/Notifications'
+import { Route as SettingsSectionsGeneralRouteImport } from './routes/settings/_sections/General'
+import { Route as SettingsSectionsBillingRouteImport } from './routes/settings/_sections/Billing'
+import { Route as SettingsSectionsApplicationsRouteImport } from './routes/settings/_sections/Applications'
+import { Route as SettingsSectionsAppearanceRouteImport } from './routes/settings/_sections/Appearance'
 
+const SettingsRouteRoute = SettingsRouteRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRouteRoute = AuthRouteRouteImport.update({
   id: '/_auth',
   getParentRoute: () => rootRouteImport,
@@ -30,6 +38,11 @@ const AuthRouteRoute = AuthRouteRouteImport.update({
 const AppRouteRoute = AppRouteRouteImport.update({
   id: '/_app',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRouteRoute,
 } as any)
 const AuthRegisterRoute = AuthRegisterRouteImport.update({
   id: '/register',
@@ -56,136 +69,165 @@ const AppProfileRoute = AppProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => AppRouteRoute,
 } as any)
-const ApppagesDashboardsSalesIndexRoute =
-  ApppagesDashboardsSalesIndexRouteImport.update({
-    id: '/(pages)/dashboards/sales/',
-    path: '/dashboards/sales/',
-    getParentRoute: () => AppRouteRoute,
+const AppDashboardsIndexRoute = AppDashboardsIndexRouteImport.update({
+  id: '/dashboards/',
+  path: '/dashboards/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const SettingsSectionsSessionsRoute =
+  SettingsSectionsSessionsRouteImport.update({
+    id: '/_sections/Sessions',
+    path: '/Sessions',
+    getParentRoute: () => SettingsRouteRoute,
   } as any)
-const ApppagesDashboardsOrdersIndexRoute =
-  ApppagesDashboardsOrdersIndexRouteImport.update({
-    id: '/(pages)/dashboards/orders/',
-    path: '/dashboards/orders/',
-    getParentRoute: () => AppRouteRoute,
+const SettingsSectionsNotificationsRoute =
+  SettingsSectionsNotificationsRouteImport.update({
+    id: '/_sections/Notifications',
+    path: '/Notifications',
+    getParentRoute: () => SettingsRouteRoute,
   } as any)
-const ApppagesDashboardsCrmAnalyticsIndexRoute =
-  ApppagesDashboardsCrmAnalyticsIndexRouteImport.update({
-    id: '/(pages)/dashboards/crm-analytics/',
-    path: '/dashboards/crm-analytics/',
-    getParentRoute: () => AppRouteRoute,
+const SettingsSectionsGeneralRoute = SettingsSectionsGeneralRouteImport.update({
+  id: '/_sections/General',
+  path: '/General',
+  getParentRoute: () => SettingsRouteRoute,
+} as any)
+const SettingsSectionsBillingRoute = SettingsSectionsBillingRouteImport.update({
+  id: '/_sections/Billing',
+  path: '/Billing',
+  getParentRoute: () => SettingsRouteRoute,
+} as any)
+const SettingsSectionsApplicationsRoute =
+  SettingsSectionsApplicationsRouteImport.update({
+    id: '/_sections/Applications',
+    path: '/Applications',
+    getParentRoute: () => SettingsRouteRoute,
   } as any)
-const ApppagesDashboardsCmsAnalyticsIndexRoute =
-  ApppagesDashboardsCmsAnalyticsIndexRouteImport.update({
-    id: '/(pages)/dashboards/cms-analytics/',
-    path: '/dashboards/cms-analytics/',
-    getParentRoute: () => AppRouteRoute,
-  } as any)
-const ApppagesSettingsSectionsGeneralRoute =
-  ApppagesSettingsSectionsGeneralRouteImport.update({
-    id: '/(pages)/settings/_sections/General',
-    path: '/settings/General',
-    getParentRoute: () => AppRouteRoute,
-  } as any)
-const ApppagesSettingsSectionsAppearanceRoute =
-  ApppagesSettingsSectionsAppearanceRouteImport.update({
-    id: '/(pages)/settings/_sections/Appearance',
-    path: '/settings/Appearance',
-    getParentRoute: () => AppRouteRoute,
+const SettingsSectionsAppearanceRoute =
+  SettingsSectionsAppearanceRouteImport.update({
+    id: '/_sections/Appearance',
+    path: '/Appearance',
+    getParentRoute: () => SettingsRouteRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
+  '/settings': typeof SettingsRouteRouteWithChildren
   '/profile': typeof AppProfileRoute
   '/forgot': typeof AuthForgotRoute
   '/login': typeof AuthLoginRoute
   '/otp': typeof AuthOtpRoute
   '/register': typeof AuthRegisterRoute
-  '/settings/Appearance': typeof ApppagesSettingsSectionsAppearanceRoute
-  '/settings/General': typeof ApppagesSettingsSectionsGeneralRoute
-  '/dashboards/cms-analytics': typeof ApppagesDashboardsCmsAnalyticsIndexRoute
-  '/dashboards/crm-analytics': typeof ApppagesDashboardsCrmAnalyticsIndexRoute
-  '/dashboards/orders': typeof ApppagesDashboardsOrdersIndexRoute
-  '/dashboards/sales': typeof ApppagesDashboardsSalesIndexRoute
+  '/': typeof AppIndexRoute
+  '/settings/Appearance': typeof SettingsSectionsAppearanceRoute
+  '/settings/Applications': typeof SettingsSectionsApplicationsRoute
+  '/settings/Billing': typeof SettingsSectionsBillingRoute
+  '/settings/General': typeof SettingsSectionsGeneralRoute
+  '/settings/Notifications': typeof SettingsSectionsNotificationsRoute
+  '/settings/Sessions': typeof SettingsSectionsSessionsRoute
+  '/dashboards': typeof AppDashboardsIndexRoute
 }
 export interface FileRoutesByTo {
+  '/settings': typeof SettingsRouteRouteWithChildren
   '/profile': typeof AppProfileRoute
   '/forgot': typeof AuthForgotRoute
   '/login': typeof AuthLoginRoute
   '/otp': typeof AuthOtpRoute
   '/register': typeof AuthRegisterRoute
-  '/settings/Appearance': typeof ApppagesSettingsSectionsAppearanceRoute
-  '/settings/General': typeof ApppagesSettingsSectionsGeneralRoute
-  '/dashboards/cms-analytics': typeof ApppagesDashboardsCmsAnalyticsIndexRoute
-  '/dashboards/crm-analytics': typeof ApppagesDashboardsCrmAnalyticsIndexRoute
-  '/dashboards/orders': typeof ApppagesDashboardsOrdersIndexRoute
-  '/dashboards/sales': typeof ApppagesDashboardsSalesIndexRoute
+  '/': typeof AppIndexRoute
+  '/settings/Appearance': typeof SettingsSectionsAppearanceRoute
+  '/settings/Applications': typeof SettingsSectionsApplicationsRoute
+  '/settings/Billing': typeof SettingsSectionsBillingRoute
+  '/settings/General': typeof SettingsSectionsGeneralRoute
+  '/settings/Notifications': typeof SettingsSectionsNotificationsRoute
+  '/settings/Sessions': typeof SettingsSectionsSessionsRoute
+  '/dashboards': typeof AppDashboardsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_app': typeof AppRouteRouteWithChildren
   '/_auth': typeof AuthRouteRouteWithChildren
+  '/settings': typeof SettingsRouteRouteWithChildren
   '/_app/profile': typeof AppProfileRoute
   '/_auth/forgot': typeof AuthForgotRoute
   '/_auth/login': typeof AuthLoginRoute
   '/_auth/otp': typeof AuthOtpRoute
   '/_auth/register': typeof AuthRegisterRoute
-  '/_app/(pages)/settings/_sections/Appearance': typeof ApppagesSettingsSectionsAppearanceRoute
-  '/_app/(pages)/settings/_sections/General': typeof ApppagesSettingsSectionsGeneralRoute
-  '/_app/(pages)/dashboards/cms-analytics/': typeof ApppagesDashboardsCmsAnalyticsIndexRoute
-  '/_app/(pages)/dashboards/crm-analytics/': typeof ApppagesDashboardsCrmAnalyticsIndexRoute
-  '/_app/(pages)/dashboards/orders/': typeof ApppagesDashboardsOrdersIndexRoute
-  '/_app/(pages)/dashboards/sales/': typeof ApppagesDashboardsSalesIndexRoute
+  '/_app/': typeof AppIndexRoute
+  '/settings/_sections/Appearance': typeof SettingsSectionsAppearanceRoute
+  '/settings/_sections/Applications': typeof SettingsSectionsApplicationsRoute
+  '/settings/_sections/Billing': typeof SettingsSectionsBillingRoute
+  '/settings/_sections/General': typeof SettingsSectionsGeneralRoute
+  '/settings/_sections/Notifications': typeof SettingsSectionsNotificationsRoute
+  '/settings/_sections/Sessions': typeof SettingsSectionsSessionsRoute
+  '/_app/dashboards/': typeof AppDashboardsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/settings'
     | '/profile'
     | '/forgot'
     | '/login'
     | '/otp'
     | '/register'
+    | '/'
     | '/settings/Appearance'
+    | '/settings/Applications'
+    | '/settings/Billing'
     | '/settings/General'
-    | '/dashboards/cms-analytics'
-    | '/dashboards/crm-analytics'
-    | '/dashboards/orders'
-    | '/dashboards/sales'
+    | '/settings/Notifications'
+    | '/settings/Sessions'
+    | '/dashboards'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/settings'
     | '/profile'
     | '/forgot'
     | '/login'
     | '/otp'
     | '/register'
+    | '/'
     | '/settings/Appearance'
+    | '/settings/Applications'
+    | '/settings/Billing'
     | '/settings/General'
-    | '/dashboards/cms-analytics'
-    | '/dashboards/crm-analytics'
-    | '/dashboards/orders'
-    | '/dashboards/sales'
+    | '/settings/Notifications'
+    | '/settings/Sessions'
+    | '/dashboards'
   id:
     | '__root__'
     | '/_app'
     | '/_auth'
+    | '/settings'
     | '/_app/profile'
     | '/_auth/forgot'
     | '/_auth/login'
     | '/_auth/otp'
     | '/_auth/register'
-    | '/_app/(pages)/settings/_sections/Appearance'
-    | '/_app/(pages)/settings/_sections/General'
-    | '/_app/(pages)/dashboards/cms-analytics/'
-    | '/_app/(pages)/dashboards/crm-analytics/'
-    | '/_app/(pages)/dashboards/orders/'
-    | '/_app/(pages)/dashboards/sales/'
+    | '/_app/'
+    | '/settings/_sections/Appearance'
+    | '/settings/_sections/Applications'
+    | '/settings/_sections/Billing'
+    | '/settings/_sections/General'
+    | '/settings/_sections/Notifications'
+    | '/settings/_sections/Sessions'
+    | '/_app/dashboards/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   AppRouteRoute: typeof AppRouteRouteWithChildren
   AuthRouteRoute: typeof AuthRouteRouteWithChildren
+  SettingsRouteRoute: typeof SettingsRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_auth': {
       id: '/_auth'
       path: ''
@@ -199,6 +241,13 @@ declare module '@tanstack/react-router' {
       fullPath: ''
       preLoaderRoute: typeof AppRouteRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_app/': {
+      id: '/_app/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRouteRoute
     }
     '/_auth/register': {
       id: '/_auth/register'
@@ -235,72 +284,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppProfileRouteImport
       parentRoute: typeof AppRouteRoute
     }
-    '/_app/(pages)/dashboards/sales/': {
-      id: '/_app/(pages)/dashboards/sales/'
-      path: '/dashboards/sales'
-      fullPath: '/dashboards/sales'
-      preLoaderRoute: typeof ApppagesDashboardsSalesIndexRouteImport
+    '/_app/dashboards/': {
+      id: '/_app/dashboards/'
+      path: '/dashboards'
+      fullPath: '/dashboards'
+      preLoaderRoute: typeof AppDashboardsIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
-    '/_app/(pages)/dashboards/orders/': {
-      id: '/_app/(pages)/dashboards/orders/'
-      path: '/dashboards/orders'
-      fullPath: '/dashboards/orders'
-      preLoaderRoute: typeof ApppagesDashboardsOrdersIndexRouteImport
-      parentRoute: typeof AppRouteRoute
+    '/settings/_sections/Sessions': {
+      id: '/settings/_sections/Sessions'
+      path: '/Sessions'
+      fullPath: '/settings/Sessions'
+      preLoaderRoute: typeof SettingsSectionsSessionsRouteImport
+      parentRoute: typeof SettingsRouteRoute
     }
-    '/_app/(pages)/dashboards/crm-analytics/': {
-      id: '/_app/(pages)/dashboards/crm-analytics/'
-      path: '/dashboards/crm-analytics'
-      fullPath: '/dashboards/crm-analytics'
-      preLoaderRoute: typeof ApppagesDashboardsCrmAnalyticsIndexRouteImport
-      parentRoute: typeof AppRouteRoute
+    '/settings/_sections/Notifications': {
+      id: '/settings/_sections/Notifications'
+      path: '/Notifications'
+      fullPath: '/settings/Notifications'
+      preLoaderRoute: typeof SettingsSectionsNotificationsRouteImport
+      parentRoute: typeof SettingsRouteRoute
     }
-    '/_app/(pages)/dashboards/cms-analytics/': {
-      id: '/_app/(pages)/dashboards/cms-analytics/'
-      path: '/dashboards/cms-analytics'
-      fullPath: '/dashboards/cms-analytics'
-      preLoaderRoute: typeof ApppagesDashboardsCmsAnalyticsIndexRouteImport
-      parentRoute: typeof AppRouteRoute
-    }
-    '/_app/(pages)/settings/_sections/General': {
-      id: '/_app/(pages)/settings/_sections/General'
-      path: '/settings/General'
+    '/settings/_sections/General': {
+      id: '/settings/_sections/General'
+      path: '/General'
       fullPath: '/settings/General'
-      preLoaderRoute: typeof ApppagesSettingsSectionsGeneralRouteImport
-      parentRoute: typeof AppRouteRoute
+      preLoaderRoute: typeof SettingsSectionsGeneralRouteImport
+      parentRoute: typeof SettingsRouteRoute
     }
-    '/_app/(pages)/settings/_sections/Appearance': {
-      id: '/_app/(pages)/settings/_sections/Appearance'
-      path: '/settings/Appearance'
+    '/settings/_sections/Billing': {
+      id: '/settings/_sections/Billing'
+      path: '/Billing'
+      fullPath: '/settings/Billing'
+      preLoaderRoute: typeof SettingsSectionsBillingRouteImport
+      parentRoute: typeof SettingsRouteRoute
+    }
+    '/settings/_sections/Applications': {
+      id: '/settings/_sections/Applications'
+      path: '/Applications'
+      fullPath: '/settings/Applications'
+      preLoaderRoute: typeof SettingsSectionsApplicationsRouteImport
+      parentRoute: typeof SettingsRouteRoute
+    }
+    '/settings/_sections/Appearance': {
+      id: '/settings/_sections/Appearance'
+      path: '/Appearance'
       fullPath: '/settings/Appearance'
-      preLoaderRoute: typeof ApppagesSettingsSectionsAppearanceRouteImport
-      parentRoute: typeof AppRouteRoute
+      preLoaderRoute: typeof SettingsSectionsAppearanceRouteImport
+      parentRoute: typeof SettingsRouteRoute
     }
   }
 }
 
 interface AppRouteRouteChildren {
   AppProfileRoute: typeof AppProfileRoute
-  ApppagesSettingsSectionsAppearanceRoute: typeof ApppagesSettingsSectionsAppearanceRoute
-  ApppagesSettingsSectionsGeneralRoute: typeof ApppagesSettingsSectionsGeneralRoute
-  ApppagesDashboardsCmsAnalyticsIndexRoute: typeof ApppagesDashboardsCmsAnalyticsIndexRoute
-  ApppagesDashboardsCrmAnalyticsIndexRoute: typeof ApppagesDashboardsCrmAnalyticsIndexRoute
-  ApppagesDashboardsOrdersIndexRoute: typeof ApppagesDashboardsOrdersIndexRoute
-  ApppagesDashboardsSalesIndexRoute: typeof ApppagesDashboardsSalesIndexRoute
+  AppIndexRoute: typeof AppIndexRoute
+  AppDashboardsIndexRoute: typeof AppDashboardsIndexRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppProfileRoute: AppProfileRoute,
-  ApppagesSettingsSectionsAppearanceRoute:
-    ApppagesSettingsSectionsAppearanceRoute,
-  ApppagesSettingsSectionsGeneralRoute: ApppagesSettingsSectionsGeneralRoute,
-  ApppagesDashboardsCmsAnalyticsIndexRoute:
-    ApppagesDashboardsCmsAnalyticsIndexRoute,
-  ApppagesDashboardsCrmAnalyticsIndexRoute:
-    ApppagesDashboardsCrmAnalyticsIndexRoute,
-  ApppagesDashboardsOrdersIndexRoute: ApppagesDashboardsOrdersIndexRoute,
-  ApppagesDashboardsSalesIndexRoute: ApppagesDashboardsSalesIndexRoute,
+  AppIndexRoute: AppIndexRoute,
+  AppDashboardsIndexRoute: AppDashboardsIndexRoute,
 }
 
 const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
@@ -325,9 +370,32 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
   AuthRouteRouteChildren,
 )
 
+interface SettingsRouteRouteChildren {
+  SettingsSectionsAppearanceRoute: typeof SettingsSectionsAppearanceRoute
+  SettingsSectionsApplicationsRoute: typeof SettingsSectionsApplicationsRoute
+  SettingsSectionsBillingRoute: typeof SettingsSectionsBillingRoute
+  SettingsSectionsGeneralRoute: typeof SettingsSectionsGeneralRoute
+  SettingsSectionsNotificationsRoute: typeof SettingsSectionsNotificationsRoute
+  SettingsSectionsSessionsRoute: typeof SettingsSectionsSessionsRoute
+}
+
+const SettingsRouteRouteChildren: SettingsRouteRouteChildren = {
+  SettingsSectionsAppearanceRoute: SettingsSectionsAppearanceRoute,
+  SettingsSectionsApplicationsRoute: SettingsSectionsApplicationsRoute,
+  SettingsSectionsBillingRoute: SettingsSectionsBillingRoute,
+  SettingsSectionsGeneralRoute: SettingsSectionsGeneralRoute,
+  SettingsSectionsNotificationsRoute: SettingsSectionsNotificationsRoute,
+  SettingsSectionsSessionsRoute: SettingsSectionsSessionsRoute,
+}
+
+const SettingsRouteRouteWithChildren = SettingsRouteRoute._addFileChildren(
+  SettingsRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   AppRouteRoute: AppRouteRouteWithChildren,
   AuthRouteRoute: AuthRouteRouteWithChildren,
+  SettingsRouteRoute: SettingsRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
