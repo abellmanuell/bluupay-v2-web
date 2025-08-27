@@ -23,7 +23,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       <Outlet />
       <Tooltip />
       <Toaster />
-      <TanstackDevtools
+      {/* <TanstackDevtools
         config={{
           position: 'bottom-left',
         }}
@@ -35,7 +35,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
           StoreDevtools,
           TanStackQueryDevtools,
         ]}
-      />
+      /> */}
     </>
   ),
   // beforeLoad: async () => {}

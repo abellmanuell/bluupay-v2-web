@@ -12,12 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SettingsRouteRouteImport } from './routes/settings/route'
 import { Route as AuthRouteRouteImport } from './routes/_auth/route'
 import { Route as AppRouteRouteImport } from './routes/_app/route'
+import { Route as AppsIndexRouteImport } from './routes/apps/index'
 import { Route as AppIndexRouteImport } from './routes/_app/index'
 import { Route as AuthRegisterRouteImport } from './routes/_auth/register'
 import { Route as AuthOtpRouteImport } from './routes/_auth/otp'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as AuthForgotRouteImport } from './routes/_auth/forgot'
 import { Route as AppProfileRouteImport } from './routes/_app/profile'
+import { Route as AppsPosIndexRouteImport } from './routes/apps/pos/index'
 import { Route as AppDashboardsIndexRouteImport } from './routes/_app/dashboards/index'
 import { Route as SettingsSectionsSessionsRouteImport } from './routes/settings/_sections/Sessions'
 import { Route as SettingsSectionsNotificationsRouteImport } from './routes/settings/_sections/Notifications'
@@ -37,6 +39,11 @@ const AuthRouteRoute = AuthRouteRouteImport.update({
 } as any)
 const AppRouteRoute = AppRouteRouteImport.update({
   id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsIndexRoute = AppsIndexRouteImport.update({
+  id: '/apps/',
+  path: '/apps/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppIndexRoute = AppIndexRouteImport.update({
@@ -68,6 +75,11 @@ const AppProfileRoute = AppProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
   getParentRoute: () => AppRouteRoute,
+} as any)
+const AppsPosIndexRoute = AppsPosIndexRouteImport.update({
+  id: '/apps/pos/',
+  path: '/apps/pos/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AppDashboardsIndexRoute = AppDashboardsIndexRouteImport.update({
   id: '/dashboards/',
@@ -117,6 +129,7 @@ export interface FileRoutesByFullPath {
   '/otp': typeof AuthOtpRoute
   '/register': typeof AuthRegisterRoute
   '/': typeof AppIndexRoute
+  '/apps': typeof AppsIndexRoute
   '/settings/Appearance': typeof SettingsSectionsAppearanceRoute
   '/settings/Applications': typeof SettingsSectionsApplicationsRoute
   '/settings/Billing': typeof SettingsSectionsBillingRoute
@@ -124,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/settings/Notifications': typeof SettingsSectionsNotificationsRoute
   '/settings/Sessions': typeof SettingsSectionsSessionsRoute
   '/dashboards': typeof AppDashboardsIndexRoute
+  '/apps/pos': typeof AppsPosIndexRoute
 }
 export interface FileRoutesByTo {
   '/settings': typeof SettingsRouteRouteWithChildren
@@ -133,6 +147,7 @@ export interface FileRoutesByTo {
   '/otp': typeof AuthOtpRoute
   '/register': typeof AuthRegisterRoute
   '/': typeof AppIndexRoute
+  '/apps': typeof AppsIndexRoute
   '/settings/Appearance': typeof SettingsSectionsAppearanceRoute
   '/settings/Applications': typeof SettingsSectionsApplicationsRoute
   '/settings/Billing': typeof SettingsSectionsBillingRoute
@@ -140,6 +155,7 @@ export interface FileRoutesByTo {
   '/settings/Notifications': typeof SettingsSectionsNotificationsRoute
   '/settings/Sessions': typeof SettingsSectionsSessionsRoute
   '/dashboards': typeof AppDashboardsIndexRoute
+  '/apps/pos': typeof AppsPosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -152,6 +168,7 @@ export interface FileRoutesById {
   '/_auth/otp': typeof AuthOtpRoute
   '/_auth/register': typeof AuthRegisterRoute
   '/_app/': typeof AppIndexRoute
+  '/apps/': typeof AppsIndexRoute
   '/settings/_sections/Appearance': typeof SettingsSectionsAppearanceRoute
   '/settings/_sections/Applications': typeof SettingsSectionsApplicationsRoute
   '/settings/_sections/Billing': typeof SettingsSectionsBillingRoute
@@ -159,6 +176,7 @@ export interface FileRoutesById {
   '/settings/_sections/Notifications': typeof SettingsSectionsNotificationsRoute
   '/settings/_sections/Sessions': typeof SettingsSectionsSessionsRoute
   '/_app/dashboards/': typeof AppDashboardsIndexRoute
+  '/apps/pos/': typeof AppsPosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -170,6 +188,7 @@ export interface FileRouteTypes {
     | '/otp'
     | '/register'
     | '/'
+    | '/apps'
     | '/settings/Appearance'
     | '/settings/Applications'
     | '/settings/Billing'
@@ -177,6 +196,7 @@ export interface FileRouteTypes {
     | '/settings/Notifications'
     | '/settings/Sessions'
     | '/dashboards'
+    | '/apps/pos'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/settings'
@@ -186,6 +206,7 @@ export interface FileRouteTypes {
     | '/otp'
     | '/register'
     | '/'
+    | '/apps'
     | '/settings/Appearance'
     | '/settings/Applications'
     | '/settings/Billing'
@@ -193,6 +214,7 @@ export interface FileRouteTypes {
     | '/settings/Notifications'
     | '/settings/Sessions'
     | '/dashboards'
+    | '/apps/pos'
   id:
     | '__root__'
     | '/_app'
@@ -204,6 +226,7 @@ export interface FileRouteTypes {
     | '/_auth/otp'
     | '/_auth/register'
     | '/_app/'
+    | '/apps/'
     | '/settings/_sections/Appearance'
     | '/settings/_sections/Applications'
     | '/settings/_sections/Billing'
@@ -211,12 +234,15 @@ export interface FileRouteTypes {
     | '/settings/_sections/Notifications'
     | '/settings/_sections/Sessions'
     | '/_app/dashboards/'
+    | '/apps/pos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   AppRouteRoute: typeof AppRouteRouteWithChildren
   AuthRouteRoute: typeof AuthRouteRouteWithChildren
   SettingsRouteRoute: typeof SettingsRouteRouteWithChildren
+  AppsIndexRoute: typeof AppsIndexRoute
+  AppsPosIndexRoute: typeof AppsPosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -240,6 +266,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: ''
       preLoaderRoute: typeof AppRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/': {
+      id: '/apps/'
+      path: '/apps'
+      fullPath: '/apps'
+      preLoaderRoute: typeof AppsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_app/': {
@@ -283,6 +316,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/profile'
       preLoaderRoute: typeof AppProfileRouteImport
       parentRoute: typeof AppRouteRoute
+    }
+    '/apps/pos/': {
+      id: '/apps/pos/'
+      path: '/apps/pos'
+      fullPath: '/apps/pos'
+      preLoaderRoute: typeof AppsPosIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_app/dashboards/': {
       id: '/_app/dashboards/'
@@ -396,6 +436,8 @@ const rootRouteChildren: RootRouteChildren = {
   AppRouteRoute: AppRouteRouteWithChildren,
   AuthRouteRoute: AuthRouteRouteWithChildren,
   SettingsRouteRoute: SettingsRouteRouteWithChildren,
+  AppsIndexRoute: AppsIndexRoute,
+  AppsPosIndexRoute: AppsPosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

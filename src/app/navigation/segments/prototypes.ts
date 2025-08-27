@@ -12,33 +12,6 @@ export const prototypes: NavigationTree = {
   transKey: "nav.prototypes.prototypes",
   icon: "prototypes",
   childs: [
-  /*   {
-      id: "prototypes.onboarding",
-      path: path(ROOT_PROTOTYPES, "/onboarding"),
-      type: "collapse",
-      title: "Onboarding",
-      transKey: "nav.prototypes.onboarding",
-      icon: "prototypes.onboarding",
-      childs: [
-        {
-          id: "prototypes.onboarding-1",
-          type: "item",
-          path: path(ROOT_PROTOTYPES, "/onboarding/onboarding-1"),
-          title: "Onboarding 1",
-          transKey: "nav.prototypes.onboarding-1",
-          icon: "prototypes",
-        },
-        {
-          id: "prototypes.onboarding-2",
-          type: "item",
-          path: path(ROOT_PROTOTYPES, "/onboarding/onboarding-2"),
-          title: "Onboarding 2",
-          transKey: "nav.prototypes.onboarding-2",
-          icon: "prototypes",
-        },
-      ],
-    }, */
-   
    {
       id: "prototypes.catalog",
       path: path(ROOT_PROTOTYPES, "/catalog"),
@@ -67,7 +40,7 @@ export const prototypes: NavigationTree = {
       id: "prototypes.adjustments",
       path: path(ROOT_PROTOTYPES, "/adjustments"),
       type: "item",
-      title: "Barcode & SKU",
+      title: "Adjustments",
       transKey: "nav.prototypes.adjustments",
       icon: "prototypes.adjustments",
     },  
