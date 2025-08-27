@@ -23,7 +23,7 @@ export function ProductCard({ image, name, category, price }: Product) {
           {category}
         </p>
         <p className="text-primary-600 dark:text-primary-400 text-end font-medium">
-          ${price}
+          ₦{price}
         </p>
       </div>
       <div className="absolute inset-0 cursor-pointer rounded-lg bg-black/10 opacity-0 transition-colors group-hover:opacity-100" />
