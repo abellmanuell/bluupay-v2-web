@@ -21,6 +21,7 @@ import { Route as AuthForgotRouteImport } from './routes/_auth/forgot'
 import { Route as AppProfileRouteImport } from './routes/_app/profile'
 import { Route as AppsPosIndexRouteImport } from './routes/apps/pos/index'
 import { Route as AppDashboardsIndexRouteImport } from './routes/_app/dashboards/index'
+import { Route as AppBanking1IndexRouteImport } from './routes/_app/banking-1/index'
 import { Route as SettingsSectionsSessionsRouteImport } from './routes/settings/_sections/Sessions'
 import { Route as SettingsSectionsNotificationsRouteImport } from './routes/settings/_sections/Notifications'
 import { Route as SettingsSectionsGeneralRouteImport } from './routes/settings/_sections/General'
@@ -86,6 +87,11 @@ const AppDashboardsIndexRoute = AppDashboardsIndexRouteImport.update({
   path: '/dashboards/',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppBanking1IndexRoute = AppBanking1IndexRouteImport.update({
+  id: '/banking-1/',
+  path: '/banking-1/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const SettingsSectionsSessionsRoute =
   SettingsSectionsSessionsRouteImport.update({
     id: '/_sections/Sessions',
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/settings/General': typeof SettingsSectionsGeneralRoute
   '/settings/Notifications': typeof SettingsSectionsNotificationsRoute
   '/settings/Sessions': typeof SettingsSectionsSessionsRoute
+  '/banking-1': typeof AppBanking1IndexRoute
   '/dashboards': typeof AppDashboardsIndexRoute
   '/apps/pos': typeof AppsPosIndexRoute
 }
@@ -154,6 +161,7 @@ export interface FileRoutesByTo {
   '/settings/General': typeof SettingsSectionsGeneralRoute
   '/settings/Notifications': typeof SettingsSectionsNotificationsRoute
   '/settings/Sessions': typeof SettingsSectionsSessionsRoute
+  '/banking-1': typeof AppBanking1IndexRoute
   '/dashboards': typeof AppDashboardsIndexRoute
   '/apps/pos': typeof AppsPosIndexRoute
 }
@@ -175,6 +183,7 @@ export interface FileRoutesById {
   '/settings/_sections/General': typeof SettingsSectionsGeneralRoute
   '/settings/_sections/Notifications': typeof SettingsSectionsNotificationsRoute
   '/settings/_sections/Sessions': typeof SettingsSectionsSessionsRoute
+  '/_app/banking-1/': typeof AppBanking1IndexRoute
   '/_app/dashboards/': typeof AppDashboardsIndexRoute
   '/apps/pos/': typeof AppsPosIndexRoute
 }
@@ -195,6 +204,7 @@ export interface FileRouteTypes {
     | '/settings/General'
     | '/settings/Notifications'
     | '/settings/Sessions'
+    | '/banking-1'
     | '/dashboards'
     | '/apps/pos'
   fileRoutesByTo: FileRoutesByTo
@@ -213,6 +223,7 @@ export interface FileRouteTypes {
     | '/settings/General'
     | '/settings/Notifications'
     | '/settings/Sessions'
+    | '/banking-1'
     | '/dashboards'
     | '/apps/pos'
   id:
@@ -233,6 +244,7 @@ export interface FileRouteTypes {
     | '/settings/_sections/General'
     | '/settings/_sections/Notifications'
     | '/settings/_sections/Sessions'
+    | '/_app/banking-1/'
     | '/_app/dashboards/'
     | '/apps/pos/'
   fileRoutesById: FileRoutesById
@@ -331,6 +343,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardsIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/_app/banking-1/': {
+      id: '/_app/banking-1/'
+      path: '/banking-1'
+      fullPath: '/banking-1'
+      preLoaderRoute: typeof AppBanking1IndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/settings/_sections/Sessions': {
       id: '/settings/_sections/Sessions'
       path: '/Sessions'
@@ -379,12 +398,14 @@ declare module '@tanstack/react-router' {
 interface AppRouteRouteChildren {
   AppProfileRoute: typeof AppProfileRoute
   AppIndexRoute: typeof AppIndexRoute
+  AppBanking1IndexRoute: typeof AppBanking1IndexRoute
   AppDashboardsIndexRoute: typeof AppDashboardsIndexRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppProfileRoute: AppProfileRoute,
   AppIndexRoute: AppIndexRoute,
+  AppBanking1IndexRoute: AppBanking1IndexRoute,
   AppDashboardsIndexRoute: AppDashboardsIndexRoute,
 }
 
