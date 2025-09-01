@@ -20,47 +20,47 @@ const items: Category[] = [
   {
     uid: "1",
     name: "Burger",
-    image: "/images/100x100.png",
+    image: "https://www.allrecipes.com/thmb/5JVfA7MxfTUPfRerQMdF-nGKsLY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/25473-the-perfect-basic-burger-DDMFS-4x3-56eaba3833fd4a26a82755bcd0be0c54.jpg",
   },
   {
     uid: "2",
     name: "Hot Dog",
-    image: "/images/100x100.png",
+    image: "https://static01.nyt.com/images/2024/06/28/multimedia/28GRILL-HOTDOGS-REX-cqwj/01GRILL-HOTDOGS-REX-cqwj-mediumSquareAt3X.jpg",
   },
   {
     uid: "3",
     name: "Pizza",
-    image: "/images/100x100.png",
+    image: "https://assets.surlatable.com/m/15a89c2d9c6c1345/72_dpi_webp-REC-283110_Pizza.jpg",
   },
   {
     uid: "4",
     name: "Sandwich",
-    image: "/images/100x100.png",
+    image: "https://indianakitchen.com/wp-content/uploads/2015/03/Ham-Sandwich.jpg",
   },
   {
     uid: "5",
     name: "Popcorn",
-    image: "/images/100x100.png",
+    image: "https://www.100daysofrealfood.com/wp-content/uploads/2011/06/popcorn1.jpg",
   },
   {
     uid: "6",
     name: "Taco",
-    image: "/images/100x100.png",
+    image: "https://flavorthemoments.com/wp-content/uploads/2024/07/ground-beef-tacos-1.jpg",
   },
   {
     uid: "7",
     name: "Burrito",
-    image: "/images/100x100.png",
+    image: "https://static01.nyt.com/images/2024/01/10/multimedia/AS-Burrito-vzhk/AS-Burrito-vzhk-mediumSquareAt3X.jpg",
   },
   {
     uid: "8",
     name: "Pizza",
-    image: "/images/100x100.png",
+    image: "https://assets.surlatable.com/m/15a89c2d9c6c1345/72_dpi_webp-REC-283110_Pizza.jpg",
   },
   {
     uid: "9",
     name: "Burrito",
-    image: "/images/100x100.png",
+    image: "https://static01.nyt.com/images/2024/01/10/multimedia/AS-Burrito-vzhk/AS-Burrito-vzhk-mediumSquareAt3X.jpg",
   },
 ];
 
@@ -129,7 +129,7 @@ export function Categories() {
                   alt={name}
                   src={image}
                   loading="lazy"
-                  className="mx-auto w-12"
+                  className="mx-auto w-12 h-12"
                 />
                 <p className="truncate pt-2 font-medium tracking-wide">
                   {name}
