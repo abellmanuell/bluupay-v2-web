@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SettingsRouteRouteImport } from './routes/settings/route'
 import { Route as AuthRouteRouteImport } from './routes/_auth/route'
 import { Route as AppRouteRouteImport } from './routes/_app/route'
+import { Route as ChatIndexRouteImport } from './routes/chat/index'
 import { Route as AppsIndexRouteImport } from './routes/apps/index'
 import { Route as AppIndexRouteImport } from './routes/_app/index'
 import { Route as AuthRegisterRouteImport } from './routes/_auth/register'
@@ -40,6 +41,11 @@ const AuthRouteRoute = AuthRouteRouteImport.update({
 } as any)
 const AppRouteRoute = AppRouteRouteImport.update({
   id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatIndexRoute = ChatIndexRouteImport.update({
+  id: '/chat/',
+  path: '/chat/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppsIndexRoute = AppsIndexRouteImport.update({
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof AuthRegisterRoute
   '/': typeof AppIndexRoute
   '/apps': typeof AppsIndexRoute
+  '/chat': typeof ChatIndexRoute
   '/settings/Appearance': typeof SettingsSectionsAppearanceRoute
   '/settings/Applications': typeof SettingsSectionsApplicationsRoute
   '/settings/Billing': typeof SettingsSectionsBillingRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByTo {
   '/register': typeof AuthRegisterRoute
   '/': typeof AppIndexRoute
   '/apps': typeof AppsIndexRoute
+  '/chat': typeof ChatIndexRoute
   '/settings/Appearance': typeof SettingsSectionsAppearanceRoute
   '/settings/Applications': typeof SettingsSectionsApplicationsRoute
   '/settings/Billing': typeof SettingsSectionsBillingRoute
@@ -177,6 +185,7 @@ export interface FileRoutesById {
   '/_auth/register': typeof AuthRegisterRoute
   '/_app/': typeof AppIndexRoute
   '/apps/': typeof AppsIndexRoute
+  '/chat/': typeof ChatIndexRoute
   '/settings/_sections/Appearance': typeof SettingsSectionsAppearanceRoute
   '/settings/_sections/Applications': typeof SettingsSectionsApplicationsRoute
   '/settings/_sections/Billing': typeof SettingsSectionsBillingRoute
@@ -198,6 +207,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/'
     | '/apps'
+    | '/chat'
     | '/settings/Appearance'
     | '/settings/Applications'
     | '/settings/Billing'
@@ -217,6 +227,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/'
     | '/apps'
+    | '/chat'
     | '/settings/Appearance'
     | '/settings/Applications'
     | '/settings/Billing'
@@ -238,6 +249,7 @@ export interface FileRouteTypes {
     | '/_auth/register'
     | '/_app/'
     | '/apps/'
+    | '/chat/'
     | '/settings/_sections/Appearance'
     | '/settings/_sections/Applications'
     | '/settings/_sections/Billing'
@@ -254,6 +266,7 @@ export interface RootRouteChildren {
   AuthRouteRoute: typeof AuthRouteRouteWithChildren
   SettingsRouteRoute: typeof SettingsRouteRouteWithChildren
   AppsIndexRoute: typeof AppsIndexRoute
+  ChatIndexRoute: typeof ChatIndexRoute
   AppsPosIndexRoute: typeof AppsPosIndexRoute
 }
 
@@ -278,6 +291,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: ''
       preLoaderRoute: typeof AppRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat/': {
+      id: '/chat/'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apps/': {
@@ -458,6 +478,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRouteRoute: AuthRouteRouteWithChildren,
   SettingsRouteRoute: SettingsRouteRouteWithChildren,
   AppsIndexRoute: AppsIndexRoute,
+  ChatIndexRoute: ChatIndexRoute,
   AppsPosIndexRoute: AppsPosIndexRoute,
 }
 export const routeTree = rootRouteImport
